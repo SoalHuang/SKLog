@@ -39,7 +39,12 @@ open class PTLog {
     private let queue = DispatchQueue(label: "com.putao.log.queue")
     
     //level default is .trace
-    public init(_ printMinLevel: Level = .trace, _ logMinLevel: Level = .trace) {
+    public init(_ printEnabled: Bool = true,
+                _ logEnabled: Bool = false,
+                _ printMinLevel: Level = .trace,
+                _ logMinLevel: Level = .trace) {
+        self.isPrintEnabled = printEnabled
+        self.isLogEnabled = logEnabled
         self.printMinLevel = printMinLevel
         self.logMinLevel = logMinLevel
     }
