@@ -8,13 +8,14 @@
 
 import Foundation
 
+
 public enum Level: Int {
     case trace
     case debug
     case info
     case warning
     case error
-    var description: String {
+    public var description: String {
         get {
             return String(describing: self).uppercased()
         }
@@ -23,14 +24,21 @@ public enum Level: Int {
 
 open class PTLog {
     
-    var isPrintEnabled: Bool = true
-    var isLogEnabled: Bool = false
+    //default is true
+    open var isPrintEnabled: Bool = true
     
-    var printMinLevel: Level = .warning
-    var logMinLevel: Level = .warning
+    //default is false
+    open var isLogEnabled: Bool = false
+    
+    //default is .warning
+    open var printMinLevel: Level = .warning
+    
+    //default is .warning
+    open var logMinLevel: Level = .warning
     
     private let queue = DispatchQueue(label: "com.putao.log.queue")
     
+    //level default is .trace
     public init(_ printMinLevel: Level = .trace, _ logMinLevel: Level = .trace) {
         self.printMinLevel = printMinLevel
         self.logMinLevel = logMinLevel
