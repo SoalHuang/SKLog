@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension PTLog {
+    class func showLogViewController(_ parent: UIViewController) {
+        parent.present(PTLogViewController(), animated: true, completion: nil)
+    }
+}
+
 fileprivate extension Level {
     var colorHex: Int {
         get {
