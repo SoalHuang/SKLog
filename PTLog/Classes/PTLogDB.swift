@@ -45,7 +45,7 @@ fileprivate let dateFormatter: DateFormatter = {
     return f
 }()
 
-struct PTLogRow {
+public struct PTLogRow {
     
     var level: Level
     var file:String
@@ -121,7 +121,7 @@ struct PTLogRow {
     
 }
 
-final class PTLogDB: NSObject {
+final public class PTLogDB: NSObject {
     
     static let shared = PTLogDB()
     

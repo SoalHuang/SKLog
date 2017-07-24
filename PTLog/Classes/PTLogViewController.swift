@@ -8,12 +8,6 @@
 
 import UIKit
 
-extension PTLog {
-    class func showLogViewController(_ parent: UIViewController) {
-        parent.present(PTLogViewController(), animated: true, completion: nil)
-    }
-}
-
 fileprivate extension Level {
     var colorHex: Int {
         get {
@@ -42,10 +36,10 @@ fileprivate let dateFormatter: DateFormatter = {
 
 fileprivate let LogViewBorder: CGFloat = 6
 
-class PTLogViewController: UIViewController {
+open class PTLogViewController: UIViewController {
     
     // MARK: Life cycle
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -54,7 +48,7 @@ class PTLogViewController: UIViewController {
         self.hidesBottomBarWhenPushed = true
     }
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
         self.view.addSubview(textView)
@@ -62,12 +56,12 @@ class PTLogViewController: UIViewController {
         self.level = .trace
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    override func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         textView.frame = UIEdgeInsetsInsetRect(self.view.bounds, UIEdgeInsets(top: 20,
                                                                               left: 0,

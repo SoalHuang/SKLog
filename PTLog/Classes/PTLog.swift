@@ -71,4 +71,3 @@ open class PTLog {
     }
     
 }
-
