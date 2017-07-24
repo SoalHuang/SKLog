@@ -103,6 +103,7 @@
 				9CB793DA1F25ED5B006F3CED /* Frameworks */,
 				9CB793DB1F25ED5B006F3CED /* Headers */,
 				9CB793DC1F25ED5B006F3CED /* Resources */,
+				9CB794431F260584006F3CED /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -155,6 +156,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9CB794431F260584006F3CED /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9CB793D91F25ED5B006F3CED /* Sources */ = {
@@ -340,6 +358,7 @@
 				9CB793F41F25ED5B006F3CED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
