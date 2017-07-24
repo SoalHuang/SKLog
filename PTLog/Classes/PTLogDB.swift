@@ -115,7 +115,7 @@ struct PTLogRow {
             comps.append("Col:\(column)")
             comps.append("Func:\(function)\n")
             comps.append("Msg:\(message)")
-            return comps.joined(separator: "").appending(terminator)
+            return comps.joined(separator: separator).appending(terminator)
         }
     }
     
