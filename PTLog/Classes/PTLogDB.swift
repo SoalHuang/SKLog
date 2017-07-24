@@ -109,12 +109,12 @@ struct PTLogRow {
     
     var description: String {
         get {
-            var comps = ["[\(level.description)] Date:" + dateFormatter.string(from: Date(timeIntervalSince1970: timeInt)) + "\n"]
-            comps.append("File:\(file)\n")
-            comps.append("Line:\(line)")
+            var comps = ["[\(level.description)] Date:" + dateFormatter.string(from: Date(timeIntervalSince1970: timeInt))]
+            comps.append("\nFile:\(file)")
+            comps.append("\nLine:\(line)")
             comps.append("Col:\(column)")
-            comps.append("Func:\(function)\n")
-            comps.append("Msg:\(message)")
+            comps.append("Func:\(function)")
+            comps.append("\nMsg:\(message)")
             return comps.joined(separator: separator).appending(terminator)
         }
     }
