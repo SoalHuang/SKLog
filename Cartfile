@@ -1,0 +1,4 @@
+# 如果需要添加某一个类库，放开注释执行 carthage update --platform iOS，更新完请将注释加回去
+
+# git@github.com:stephencelis/SQLite.swift.git
+ github "stephencelis/SQLite.swift" ~> 0.11.3
