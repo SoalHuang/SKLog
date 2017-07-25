@@ -1,6 +1,6 @@
 //
-//  PTLogDB.swift
-//  PTLog
+//  SKLogDB.swift
+//  SKLog
 //
 //  Created by soso on 2017/7/18.
 //  Copyright © 2017年 soso. All rights reserved.
@@ -45,7 +45,7 @@ fileprivate let dateFormatter: DateFormatter = {
     return f
 }()
 
-public struct PTLogRow {
+public struct SKLogRow {
     
     var level: Level
     var file:String
@@ -121,9 +121,9 @@ public struct PTLogRow {
     
 }
 
-final public class PTLogDB: NSObject {
+final public class SKLogDB: NSObject {
     
-    static let shared = PTLogDB()
+    static let shared = SKLogDB()
     
     fileprivate var path: String = NSHomeDirectory().appending("/Documents/Log/log.sqlite")
     
@@ -188,25 +188,25 @@ final public class PTLogDB: NSObject {
 }
 
 // MARK: API
-extension PTLogDB {
+extension SKLogDB {
     
-    public func insert(_ row: PTLogRow) {
+    public func insert(_ row: SKLogRow) {
         let writeItem = DispatchWorkItem(qos: .default, flags: .barrier) {
             try? _ = self.sqlite_db?.run(self.sqlite_table.insert(row.setters))
         }
         queue.async(execute: writeItem)
     }
     
-    public func query(level: Level, limit: Int = Int.max, start: TimeInterval, end: TimeInterval) -> [PTLogRow]? {
-        var rows: [PTLogRow]?
+    public func query(level: Level, limit: Int = Int.max, start: TimeInterval, end: TimeInterval) -> [SKLogRow]? {
+        var rows: [SKLogRow]?
         queue.sync {
             let predicate = sqlite_level == level.rawValue && sqlite_timeInt > start && sqlite_timeInt < end
             let query = self.sqlite_table.filter(predicate).order(sqlite_timeInt.desc).limit(limit)
             guard let table = try? self.sqlite_db?.prepare(query) else {
                 return
             }
-            rows = table?.flatMap({ (row) -> PTLogRow? in
-                return PTLogRow(with: row)
+            rows = table?.flatMap({ (row) -> SKLogRow? in
+                return SKLogRow(with: row)
             })
         }
         return rows

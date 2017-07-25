@@ -1,6 +1,6 @@
 //
-//  PTLog.swift
-//  PTLog
+//  SKLog.swift
+//  SKLog
 //
 //  Created by soso on 2017/7/18.
 //  Copyright © 2017年 soso. All rights reserved.
@@ -22,7 +22,7 @@ public enum Level: Int {
     }
 }
 
-open class PTLog {
+open class SKLog {
     
     //default is true
     open var isPrintEnabled: Bool = true
@@ -70,7 +70,7 @@ open class PTLog {
     }
     
     private func log(_ level: Level, _ items: [Any], _ separator: String, _ terminator: String, _ file: String, _ line: Int, _ column: Int, _ function: String) {
-        let row = PTLogRow(level, items, separator, terminator, file, line, column, function)
+        let row = SKLogRow(level, items, separator, terminator, file, line, column, function)
         if isPrintEnabled, level.rawValue >= self.printMinLevel.rawValue {
             queue.async {
                 Swift.print(row.description)
@@ -78,7 +78,7 @@ open class PTLog {
         }
         if isLogEnabled, level.rawValue >= self.logMinLevel.rawValue {
             queue.async {
-                PTLogDB.shared.insert(row)
+                SKLogDB.shared.insert(row)
             }
         }
     }

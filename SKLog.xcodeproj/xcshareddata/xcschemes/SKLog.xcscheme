@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CB793DD1F25ED5B006F3CED"
-               BuildableName = "PTLog.framework"
-               BlueprintName = "PTLog"
-               ReferencedContainer = "container:PTLog.xcodeproj">
+               BlueprintIdentifier = "9C9A87871F26DFA60099BA98"
+               BuildableName = "SKLog.framework"
+               BlueprintName = "SKLog"
+               ReferencedContainer = "container:SKLog.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9C9A87901F26DFA60099BA98"
+               BuildableName = "SKLogTests.xctest"
+               BlueprintName = "SKLogTests"
+               ReferencedContainer = "container:SKLog.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "9C9A87871F26DFA60099BA98"
+            BuildableName = "SKLog.framework"
+            BlueprintName = "SKLog"
+            ReferencedContainer = "container:SKLog.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CB793DD1F25ED5B006F3CED"
-            BuildableName = "PTLog.framework"
-            BlueprintName = "PTLog"
-            ReferencedContainer = "container:PTLog.xcodeproj">
+            BlueprintIdentifier = "9C9A87871F26DFA60099BA98"
+            BuildableName = "SKLog.framework"
+            BlueprintName = "SKLog"
+            ReferencedContainer = "container:SKLog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +82,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9CB793DD1F25ED5B006F3CED"
-            BuildableName = "PTLog.framework"
-            BlueprintName = "PTLog"
-            ReferencedContainer = "container:PTLog.xcodeproj">
+            BlueprintIdentifier = "9C9A87871F26DFA60099BA98"
+            BuildableName = "SKLog.framework"
+            BlueprintName = "SKLog"
+            ReferencedContainer = "container:SKLog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

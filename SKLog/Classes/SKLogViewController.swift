@@ -1,6 +1,6 @@
 //
-//  PTLogViewController.swift
-//  PTLog
+//  SKLogViewController.swift
+//  SKLog
 //
 //  Created by soso on 2017/7/21.
 //  Copyright © 2017年 soso. All rights reserved.
@@ -36,7 +36,7 @@ fileprivate let dateFormatter: DateFormatter = {
 
 fileprivate let LogViewBorder: CGFloat = 6
 
-open class PTLogViewController: UIViewController {
+open class SKLogViewController: UIViewController {
     
     // MARK: Life cycle
     required public init?(coder aDecoder: NSCoder) {
@@ -71,8 +71,8 @@ open class PTLogViewController: UIViewController {
     }
     
     // MARK: Lazy
-    fileprivate lazy var toolBar: PTLogToolBar = {
-        let bar = PTLogToolBar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
+    fileprivate lazy var toolBar: SKLogToolBar = {
+        let bar = SKLogToolBar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 44))
         bar.closeButton.addTarget(self, action: #selector(closeSelect), for: .touchUpInside)
         bar.selectButton.addTarget(self, action: #selector(levelSelect), for: .touchUpInside)
         bar.startButton.addTarget(self, action: #selector(startSelect), for: .touchUpInside)
@@ -176,7 +176,7 @@ open class PTLogViewController: UIViewController {
     
     fileprivate func query(level: Level, limit: Int = Int.max, start: TimeInterval, end: TimeInterval) {
         DispatchQueue.global().async { [weak self] _ in
-            guard let `self` = self, let rows = PTLogDB.shared.query(level: level, limit: limit, start: start, end: end)?.reversed() else {
+            guard let `self` = self, let rows = SKLogDB.shared.query(level: level, limit: limit, start: start, end: end)?.reversed() else {
                 return
             }
             let attText = NSMutableAttributedString()
@@ -199,7 +199,7 @@ open class PTLogViewController: UIViewController {
 }
 
 
-fileprivate class PTLogToolBar: UIToolbar {
+fileprivate class SKLogToolBar: UIToolbar {
     
     // MARK: Life cycle
     required init?(coder aDecoder: NSCoder) {
