@@ -183,7 +183,7 @@ final public class SKLogDB: NSObject {
         }
     }
     
-    fileprivate let queue = DispatchQueue(label: "com.putao.log.db.queue", attributes: .concurrent)
+    fileprivate let queue = DispatchQueue(label: "com.sk.log.db.queue", attributes: .concurrent)
     
 }
 

@@ -36,7 +36,7 @@ open class SKLog {
     //default is .warning
     open var logMinLevel: Level = .warning
     
-    private let queue = DispatchQueue(label: "com.putao.log.queue")
+    private let queue = DispatchQueue(label: "com.sk.log.queue")
     
     //level default is .trace
     public init(_ printEnabled: Bool = true,
