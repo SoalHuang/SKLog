@@ -124,7 +124,7 @@ open class SKLogViewController: UIViewController {
     @objc fileprivate func endSelect() {
         let picker = PTDatePicker(Date(timeIntervalSince1970: end))
         picker.datePicker.minimumDate = Date(timeIntervalSince1970: start)
-        picker.datePicker.maximumDate = Date()
+        picker.datePicker.maximumDate = Date().addingTimeInterval(TimeInterval.oneMinuteSeconds)
         picker.show(self.view) { [weak self] (date) in
             self?.end = date.timeIntervalSince1970
         }
@@ -175,8 +175,8 @@ open class SKLogViewController: UIViewController {
     }
     
     fileprivate func query(level: Level, limit: Int = Int.max, start: TimeInterval, end: TimeInterval) {
-        DispatchQueue.global().async { [weak self] _ in
-            guard let `self` = self, let rows = SKLogDB.shared.query(level: level, limit: limit, start: start, end: end)?.reversed() else {
+        SKLogDB.shared.query(level: level, limit: limit, start: start, end: end) { [weak self] (rows) in
+            guard let `self` = self, let `rows` = rows?.reversed() else {
                 return
             }
             let attText = NSMutableAttributedString()

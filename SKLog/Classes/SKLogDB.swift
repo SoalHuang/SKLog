@@ -197,19 +197,21 @@ extension SKLogDB {
         queue.async(execute: writeItem)
     }
     
-    public func query(level: Level, limit: Int = Int.max, start: TimeInterval, end: TimeInterval) -> [SKLogRow]? {
-        var rows: [SKLogRow]?
-        queue.sync {
+    public func query(level: Level, limit: Int = Int.max, start: TimeInterval, end: TimeInterval, callback: (([SKLogRow]?) -> ())?) {
+        let readItem = DispatchWorkItem.init(qos: .userInteractive, flags: .assignCurrentContext) { [weak self] _ in
+            guard let `self` = self else { return }
             let predicate = sqlite_level == level.rawValue && sqlite_timeInt > start && sqlite_timeInt < end
             let query = self.sqlite_table.filter(predicate).order(sqlite_timeInt.desc).limit(limit)
             guard let table = try? self.sqlite_db?.prepare(query) else {
+                callback?(nil)
                 return
             }
-            rows = table?.flatMap({ (row) -> SKLogRow? in
+            let rows = table?.flatMap({ (row) -> SKLogRow? in
                 return SKLogRow(with: row)
             })
+            callback?(rows)
         }
-        return rows
+        queue.async(execute: readItem)
     }
     
 }
