@@ -198,7 +198,7 @@ extension SKLogDB {
     }
     
     public func query(level: Level, limit: Int = Int.max, start: TimeInterval, end: TimeInterval, callback: (([SKLogRow]?) -> ())?) {
-        let readItem = DispatchWorkItem.init(qos: .userInteractive, flags: .assignCurrentContext) { [weak self] _ in
+        let readItem = DispatchWorkItem.init(qos: .default, flags: .assignCurrentContext) { [weak self] _ in
             guard let `self` = self else { return }
             let predicate = sqlite_level == level.rawValue && sqlite_timeInt > start && sqlite_timeInt < end
             let query = self.sqlite_table.filter(predicate).order(sqlite_timeInt.desc).limit(limit)
